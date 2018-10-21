@@ -11,55 +11,85 @@ namespace Capstone_2
         static void Main(string[] args)
         {
             List<Task> Tasks = new List<Task>();
-             
-            
-            ManagerMainMenu();
-            string userInput = Console.ReadLine();
-            
-            int input = int.Parse(userInput);
-            
-            
-            switch (input)
+
+
+            do
             {
+                ManagerMainMenu();
+                string userInput = Console.ReadLine();
 
-                case 1:
-                    foreach (var i in Tasks)
-                    {
-                        Console.WriteLine(i);
-                    }                   
-                    break;
+                int input = int.Parse(userInput);
 
-                case 2:
-                    Console.WriteLine("Add Task.");
-                    Console.WriteLine("Team Member Name: ");
-                    string n = Console.ReadLine();
-                    Console.WriteLine("Task Description: ");
-                    string dis =Console.ReadLine();
-                    Console.WriteLine("Due Date: ");
-                    string due = Console.ReadLine();
-                    DateTime date = Convert.ToDateTime(due);
-                     
-                    Task newTask = new Task(n,dis,date);
-                    Tasks.Add(newTask);
 
-                    Console.WriteLine("Your Task Has Been Added.");
-                    break;
+                switch (input)
+                {
 
-                case 3:
-                    Console.WriteLine("Which task would you like to delete.");
+                    case 1:
+                        foreach (var i in Tasks)
+                        {
+                            Console.WriteLine(i);
+                        }
 
-                    break;
+                        break;
 
-                case 4:
-                    Console.WriteLine("Which task would you like to mark as complete.");
+                    case 2:
+                        Console.WriteLine("Add Task.");
+                        Console.WriteLine("Team Member Name: ");
+                        string n = Console.ReadLine();
+                        Console.WriteLine("Task Description: ");
+                        string dis = Console.ReadLine();
+                        Console.WriteLine("Due Date: ");
+                        string due = Console.ReadLine();
+                        DateTime date = Convert.ToDateTime(due);
 
-                    break;
+                        Task newTask = new Task(n, dis, date);
+                        Tasks.Add(newTask);
 
-                case 5:
+                        Console.WriteLine("Your Task Has Been Added.");
+                        break;
 
-                    break;
+                    case 3:
+                        Console.WriteLine("Which task would you like to delete.");
+                        string delete = Console.ReadLine();
+                        int deleteTask = int.Parse(delete);
 
-            }            
+                        for (int i = 0; i < Tasks.Count; i++)
+                        {
+                            if (i == deleteTask)
+                            {
+                                Tasks.RemoveAt(deleteTask);
+                            }
+                        }
+
+                        break;
+
+                    case 4:
+                        Console.WriteLine("Which task would you like to mark as complete.");
+                        string done = Console.ReadLine();
+                        bool taskComplete = bool.Parse(done);
+                        
+
+
+                        break;
+
+                    case 5:
+                        Console.WriteLine("Are you sure you want to quit?");
+                        string quit = Console.ReadLine().ToLower();
+                        if (quit == "y")
+                        {
+                            
+                        }
+                        
+                        break;
+                        
+
+                }
+                
+            } while (Continue());
+
+            
+                
+            
 
             Console.ReadLine();
         }
@@ -67,7 +97,7 @@ namespace Capstone_2
 
         public static bool Continue()
         {
-            Console.WriteLine("Again? {Y/N}");
+            Console.WriteLine("Are you sure? {Y/N}");
             string input = Console.ReadLine().ToLower();
             if (input == "y")
             {
