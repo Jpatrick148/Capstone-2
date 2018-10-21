@@ -10,7 +10,14 @@ namespace Capstone_2
     {
         static void Main(string[] args)
         {
+            string joe = "Joseph";
+            string des = "testing";
+            DateTime dateTest = Convert.ToDateTime("1/1/1111");
+
             List<Task> Tasks = new List<Task>();
+
+            Task tesTask = new Task( joe, des, dateTest);
+            Tasks.Add(tesTask);
 
 
             do
@@ -57,6 +64,7 @@ namespace Capstone_2
                         {
                             if (i == deleteTask)
                             {
+                                i--;
                                 Tasks.RemoveAt(deleteTask);
                             }
                         }
@@ -66,7 +74,21 @@ namespace Capstone_2
                     case 4:
                         Console.WriteLine("Which task would you like to mark as complete.");
                         string done = Console.ReadLine();
-                        bool taskComplete = bool.Parse(done);
+                        int taskDone = 0;
+                        bool complete = int.TryParse(done, out taskDone);
+
+                        for (int i = 0; i < Tasks.Count; i++)
+                        {
+                            
+                            if (i == taskDone)
+                            {
+                                i--;
+                                Console.WriteLine(i);
+                                
+                            }
+
+                            
+                        }
                         
 
 
@@ -77,7 +99,7 @@ namespace Capstone_2
                         string quit = Console.ReadLine().ToLower();
                         if (quit == "y")
                         {
-                            
+                            break;
                         }
                         
                         break;
@@ -88,16 +110,17 @@ namespace Capstone_2
             } while (Continue());
 
             
+
                 
             
 
-            Console.ReadLine();
+           
         }
 
 
         public static bool Continue()
         {
-            Console.WriteLine("Are you sure? {Y/N}");
+            Console.WriteLine("Back to the main menu? {Y/N}");
             string input = Console.ReadLine().ToLower();
             if (input == "y")
             {
@@ -125,5 +148,8 @@ namespace Capstone_2
 
             
         }
+
+        
+
     }
 }
