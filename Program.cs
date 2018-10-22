@@ -34,7 +34,8 @@ namespace Capstone_2
                     case 1:
                         foreach (var i in Tasks)
                         {
-                            Console.WriteLine(i);
+                            
+                            Console.WriteLine(i.ToString());
                         }
 
                         break;
@@ -64,7 +65,7 @@ namespace Capstone_2
                         {
                             if (i == deleteTask)
                             {
-                                i--;
+                                
                                 Tasks.RemoveAt(deleteTask);
                             }
                         }
@@ -75,16 +76,22 @@ namespace Capstone_2
                         Console.WriteLine("Which task would you like to mark as complete.");
                         string done = Console.ReadLine();
                         int taskDone = 0;
-                        bool complete = int.TryParse(done, out taskDone);
+                        bool complete2 = int.TryParse(done, out taskDone);
 
                         for (int i = 0; i < Tasks.Count; i++)
                         {
                             
                             if (i == taskDone)
                             {
-                                i--;
-                                Console.WriteLine(i);
                                 
+                                Console.WriteLine(i.ToString());
+                                Console.WriteLine("Are you sure you would like to complete this task? {Y/N}");
+                                string areYouSure = Console.ReadLine().ToLower();
+                                if (areYouSure == "y")
+                                {
+                                    Task.Complete() = true;
+                                }
+
                             }
 
                             
@@ -97,10 +104,7 @@ namespace Capstone_2
                     case 5:
                         Console.WriteLine("Are you sure you want to quit?");
                         string quit = Console.ReadLine().ToLower();
-                        if (quit == "y")
-                        {
-                            break;
-                        }
+                        
                         
                         break;
                         

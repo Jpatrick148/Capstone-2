@@ -27,10 +27,11 @@ namespace Capstone_2
 
         }
 
-
-        
-
-
-
+        public override string ToString()
+        {
+            return "Name: " + name1 + 
+                   ". Description: " + description1 + ". Due Date: " + 
+                   due1 + ". Is complete: " + complete1;
+        }
     }
 }
