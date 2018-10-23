@@ -27,6 +27,11 @@ namespace Capstone_2
 
         }
 
+        public void CompleteTask()
+        {
+            this.complete1 = true;
+        }
+
         public override string ToString()
         {
             return "Name: " + name1 + 

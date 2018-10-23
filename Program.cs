@@ -60,6 +60,7 @@ namespace Capstone_2
                         Console.WriteLine("Which task would you like to delete.");
                         string delete = Console.ReadLine();
                         int deleteTask = int.Parse(delete);
+                        
 
                         for (int i = 0; i < Tasks.Count; i++)
                         {
@@ -77,6 +78,7 @@ namespace Capstone_2
                         string done = Console.ReadLine();
                         int taskDone = 0;
                         bool complete2 = int.TryParse(done, out taskDone);
+                        int x = taskDone;
 
                         for (int i = 0; i < Tasks.Count; i++)
                         {
@@ -89,7 +91,8 @@ namespace Capstone_2
                                 string areYouSure = Console.ReadLine().ToLower();
                                 if (areYouSure == "y")
                                 {
-                                    //Task.Complete() = true;
+                                    Tasks[x].CompleteTask();
+                                    
                                 }
 
                             }
